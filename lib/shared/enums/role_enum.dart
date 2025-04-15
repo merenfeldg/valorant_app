@@ -1,19 +1,19 @@
 enum RoleEnum {
   duelist(
     name: 'Duelist',
-    image: '', //
+    image: 'assets/images/role_icons/duelist_icon.png', //
   ),
   initiator(
     name: 'Initiator',
-    image: '', //
+    image: 'assets/images/role_icons/initiator_icon.png', //
   ),
   controller(
     name: 'Controller',
-    image: '', //
+    image: 'assets/images/role_icons/controller_icon.png', //
   ),
   sentinel(
     name: 'Sentinel',
-    image: '', //
+    image: 'assets/images/role_icons/sentinel_icon.png', //
   ),
   unknown(
     name: 'Unkown',
