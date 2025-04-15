@@ -21,3 +21,16 @@ class NotFoundHttpClientException extends AppException {
 class ErrorUnknownHttpClientException extends AppException {
   ErrorUnknownHttpClientException(super.message, [super.stackTrace]);
 }
+
+//LOCAL STORAGE
+class DataTypeInvalidLocalStorageException extends AppException {
+  DataTypeInvalidLocalStorageException(super.message);
+}
+
+class KeyDontExistLocalStorageException extends AppException {
+  KeyDontExistLocalStorageException(super.message);
+}
+
+class ErrorUnknownLocalStorageException extends AppException {
+  ErrorUnknownLocalStorageException(super.message, [super.stackTrace]);
+}
