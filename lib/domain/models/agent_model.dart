@@ -13,6 +13,20 @@ class AgentModel {
     required this.role,
   });
 
+  AgentModel copyWith({
+    String? name,
+    String? description,
+    String? image,
+    RoleEnum? role,
+  }) {
+    return AgentModel(
+      name: name ?? this.name,
+      description: description ?? this.description,
+      image: image ?? this.image,
+      role: role ?? this.role,
+    );
+  }
+
   factory AgentModel.fromJson(Map<String, dynamic> json) {
     return AgentModel(
       name: json['displayName'],
