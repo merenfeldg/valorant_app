@@ -8,4 +8,16 @@ class AbilityValueObject {
     required this.image,
     required this.descripton, //
   });
+
+  AbilityValueObject copyWith({
+    String? name,
+    String? image,
+    String? descripton,
+  }) {
+    return AbilityValueObject(
+      name: name ?? this.name,
+      image: image ?? this.image,
+      descripton: descripton ?? this.descripton,
+    );
+  }
 }
