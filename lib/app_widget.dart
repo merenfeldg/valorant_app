@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:valorant_app/ui/design_system/themes/dark_theme.dart';
+import 'package:valorant_app/ui/pages/splash/splash_page.dart';
 
 class AppWidget extends StatelessWidget {
   const AppWidget({super.key});
@@ -12,7 +13,7 @@ class AppWidget extends StatelessWidget {
       theme: darkTheme,
       darkTheme: darkTheme,
       themeMode: ThemeMode.dark,
-      home: SizedBox(),
+      home: SplashPage(),
     );
   }
 }
