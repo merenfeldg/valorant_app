@@ -24,14 +24,12 @@ class AgentRepositoryImpl implements IAgentRepository {
 
     return _agentDatasource
         .getAgents(apiUrlConstant) //
-        .map(
+        .flatMap(
           (agents) async {
-            return await _agentDatasource
-                .translateAgentLists(
-                  agents,
-                  toLanguage: selectedLanguage.getOrNull()!,
-                )
-                .getOrThrow();
+            return await _agentDatasource.translateAgents(
+              agents,
+              toLanguage: selectedLanguage.getOrNull()!,
+            );
           }, //
         );
   }

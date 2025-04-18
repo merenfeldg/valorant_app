@@ -4,6 +4,7 @@ import 'package:valorant_app/data/datasources/translation/translation_datasource
 import 'package:valorant_app/domain/models/agent_model.dart';
 import 'package:valorant_app/domain/value_objects/ability_value_object.dart';
 import 'package:valorant_app/shared/enums/language_enum.dart';
+import 'package:valorant_app/shared/exceptions/exceptions.dart';
 
 class AgentDatasource {
   //
@@ -18,38 +19,42 @@ class AgentDatasource {
   AsyncResult<List<AgentModel>> getAgents(String url) async {
     return await _httpClient
         .get(url) //
-        .flatMap((apiResponse) {
-          final agents =
-              (apiResponse.data['data'] as List)
-                  .map((json) => AgentModel.fromJson(json))
-                  .toList();
-          return Success(agents);
+        .map((apiResponse) {
+          return (apiResponse.data['data'] as List)
+              .map((json) => AgentModel.fromJson(json))
+              .toList();
         });
   }
 
-  AsyncResult<List<AgentModel>> translateAgentLists(
+  AsyncResult<List<AgentModel>> translateAgents(
     List<AgentModel> agents, {
     required String toLanguage,
   }) async {
-    final agentTranslations = await Future.wait(
-      agents.map((agent) async {
-        final translatedDescription = await _translator.translate(
-          agent.description,
-          from: LanguageEnum.english.acronym,
-          to: toLanguage,
-        );
-        final translatedAbilities = await _translateAbilities(
-          agent.abilities,
-          LanguageEnum.english.acronym,
-          toLanguage,
-        );
-        return agent.copyWith(
-          description: translatedDescription,
-          abilities: translatedAbilities,
-        );
-      }).toList(),
-    );
-    return Success(agentTranslations);
+    try {
+      final agentTranslations = await Future.wait(
+        agents.map((agent) async {
+          final translatedDescription = await _translator.translate(
+            agent.description,
+            from: LanguageEnum.english.acronym,
+            to: toLanguage,
+          );
+          final translatedAbilities = await _translateAbilities(
+            agent.abilities,
+            LanguageEnum.english.acronym,
+            toLanguage,
+          );
+          return agent.copyWith(
+            description: translatedDescription,
+            abilities: translatedAbilities,
+          );
+        }).toList(),
+      );
+      return Success(agentTranslations);
+    } catch (e, s) {
+      return Failure(
+        ErrorUnkownTranslatorException(e.toString(), s.toString()),
+      );
+    }
   }
 
   Future<List<AbilityValueObject>> _translateAbilities(

@@ -4,6 +4,7 @@ import 'package:valorant_app/data/datasources/local_storage/local_storage_dataso
 import 'package:valorant_app/data/datasources/translation/translation_datasource.dart';
 import 'package:valorant_app/domain/repositories/i_translation_repository.dart';
 import 'package:valorant_app/shared/constants/constants.dart';
+import 'package:valorant_app/shared/exceptions/exceptions.dart';
 
 class TranslationRepositoryImpl implements ITranslationRepository {
   //
@@ -28,12 +29,18 @@ class TranslationRepositoryImpl implements ITranslationRepository {
 
   @override
   AsyncResult<String> translate(String text, String language) async {
-    final selectedlanguage = await getLanguage().getOrNull();
-    final translatedText = await _translator.translate(
-      text,
-      from: selectedlanguage!,
-      to: language,
-    );
-    return Success(translatedText);
+    try {
+      final selectedlanguage = await getLanguage().getOrNull();
+      final translatedText = await _translator.translate(
+        text,
+        from: selectedlanguage!,
+        to: language,
+      );
+      return Success(translatedText);
+    } catch (e, s) {
+      return Failure(
+        ErrorUnkownTranslatorException(e.toString(), s.toString()),
+      );
+    }
   }
 }

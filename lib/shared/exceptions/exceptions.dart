@@ -34,3 +34,8 @@ class KeyDontExistLocalStorageException extends AppException {
 class ErrorUnknownLocalStorageException extends AppException {
   ErrorUnknownLocalStorageException(super.message, [super.stackTrace]);
 }
+
+//TRANSLATOR
+class ErrorUnkownTranslatorException extends AppException {
+  ErrorUnkownTranslatorException(super.message, [super.stackTrace]);
+}
