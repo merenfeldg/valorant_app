@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:valorant_app/ui/pages/splash/animations/splash_animation_mixin.dart';
+import 'package:valorant_app/ui/splash/animations/splash_animation_mixin.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
