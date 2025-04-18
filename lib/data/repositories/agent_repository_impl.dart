@@ -24,25 +24,26 @@ class AgentRepositoryImpl implements IAgentRepository {
 
     return _agentDatasource
         .getAgents(apiUrlConstant) //
-        .flatMap(
-          (agents) => _agentDatasource.translateAgentLists(
-            agents,
-            toLanguage: selectedLanguage.getOrNull()!,
-          ),
+        .map(
+          (agents) async {
+            return await _agentDatasource
+                .translateAgentLists(
+                  agents,
+                  toLanguage: selectedLanguage.getOrNull()!,
+                )
+                .getOrThrow();
+          }, //
         );
   }
 
   @override
   AsyncResult<List<AgentModel>> searchByAgents(String name) {
     return getAgents() //
-        .flatMap(
-          (listAgents) {
-            final agents =
-                listAgents
-                    .where((agent) => agent.name == name) //
-                    .toList();
-
-            return Success(agents);
+        .map(
+          (agents) {
+            return agents
+                .where((agent) => agent.name == name) //
+                .toList();
           }, //
         );
   }
