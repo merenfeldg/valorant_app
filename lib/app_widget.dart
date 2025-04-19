@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:valorant_app/ui/design_system/themes/dark_theme.dart';
-import 'package:valorant_app/ui/pages/splash/splash_page.dart';
+import 'package:valorant_app/ui/splash/splash_page.dart';
 
 class AppWidget extends StatelessWidget {
   const AppWidget({super.key});
