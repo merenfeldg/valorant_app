@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:routefly/routefly.dart';
+import 'package:valorant_app/app_widget.dart';
+import 'package:valorant_app/config/dependecy_injector.dart';
 import 'package:valorant_app/ui/splash/animations/splash_animation_mixin.dart';
+import 'package:valorant_app/ui/splash/viewmodels/splash_viewmodel.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
@@ -14,20 +18,37 @@ class _SplashPageState extends State<SplashPage>
   final logoValorantPathImage =
       'lib/ui/design_system/assets/images/logo_valorant.png';
 
+  final _viewModel = dependecyInjector.get<SplashViewmodel>();
+
   @override
   void initState() {
     super.initState();
 
+    _viewModel.getLanguageCommand.addListener(_listanable);
     initializeAnimations(vsync: this);
-    controller.addListener(() => setState(() {}));
 
-    controller.forward();
-    Future.delayed(Duration(seconds: 1));
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      controller.addListener(() => setState(() {}));
+      controller.forward();
+
+      Future.delayed(
+        const Duration(seconds: 2),
+      ).then((_) => _viewModel.getLanguageCommand.execute());
+    });
+  }
+
+  void _listanable() {
+    if (_viewModel.getLanguageCommand.isSuccess) {
+      Routefly.navigate(routePaths.agents);
+    } else {
+      Routefly.navigate(routePaths.selectLanguage);
+    }
   }
 
   @override
   void dispose() {
     disposeAnimations();
+    _viewModel.dispose();
     super.dispose();
   }
 

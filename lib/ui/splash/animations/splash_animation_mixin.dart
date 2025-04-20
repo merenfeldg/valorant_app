@@ -19,8 +19,13 @@ mixin SplashAnimationMixin {
 
     positionYTextAnimation = Tween<double>(
       begin: -80,
-      end: -2,
-    ).animate(controller);
+      end: -2, //
+    ).animate(
+      CurvedAnimation(
+        parent: controller,
+        curve: Interval(0.4, 1), //
+      ),
+    );
   }
 
   void disposeAnimations() {

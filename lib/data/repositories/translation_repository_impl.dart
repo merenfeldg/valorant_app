@@ -24,7 +24,7 @@ class TranslationRepositoryImpl implements ITranslationRepository {
 
   @override
   AsyncResult<String> getLanguage() async {
-    return await _localStorage.read(keyLanguageConstant);
+    return await _localStorage.read<String>(keyLanguageConstant);
   }
 
   @override
