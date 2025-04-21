@@ -3,7 +3,7 @@ import 'package:routefly/routefly.dart';
 import 'package:valorant_app/app_widget.dart';
 import 'package:valorant_app/config/dependecy_injector.dart';
 import 'package:valorant_app/ui/splash/animations/splash_animation_mixin.dart';
-import 'package:valorant_app/ui/splash/viewmodels/splash_viewmodel.dart';
+import 'package:valorant_app/ui/splash/viewmodel/splash_viewmodel.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
@@ -15,8 +15,7 @@ class SplashPage extends StatefulWidget {
 class _SplashPageState extends State<SplashPage>
     with TickerProviderStateMixin, SplashAnimationMixin {
   //
-  final logoValorantPathImage =
-      'lib/ui/design_system/assets/images/logo_valorant.png';
+  final logoValorantPathImage = 'assets/images/logo_valorant.png';
 
   final _viewModel = dependecyInjector.get<SplashViewmodel>();
 

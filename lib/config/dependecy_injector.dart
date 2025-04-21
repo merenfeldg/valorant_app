@@ -9,7 +9,8 @@ import 'package:valorant_app/data/repositories/translation_repository_impl.dart'
 import 'package:valorant_app/domain/repositories/i_agent_repository.dart';
 import 'package:valorant_app/domain/repositories/i_translation_repository.dart';
 import 'package:valorant_app/shared/constants/constants.dart';
-import 'package:valorant_app/ui/splash/viewmodels/splash_viewmodel.dart';
+import 'package:valorant_app/ui/select_language/viewmodel/select_language_viewmodel.dart';
+import 'package:valorant_app/ui/splash/viewmodel/splash_viewmodel.dart';
 
 final dependecyInjector = AutoInjector();
 
@@ -33,6 +34,7 @@ void setupDependecies() {
 
   //VIEWMODELS
   dependecyInjector.addSingleton(SplashViewmodel.new);
+  dependecyInjector.addSingleton(SelectLanguageViewmodel.new);
 
   dependecyInjector.commit();
 }

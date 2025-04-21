@@ -23,7 +23,7 @@ class VavaButton extends StatelessWidget {
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
         backgroundColor: redColor,
-        minimumSize: Size(sizeMaxWidthScreen, 50),
+        minimumSize: Size(sizeMaxWidthScreen, 40),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8), //
         ),
@@ -33,6 +33,7 @@ class VavaButton extends StatelessWidget {
         style: TextStyle(
           color: whiteColor, //
           fontSize: 20,
+          fontWeight: FontWeight.normal,
         ),
       ), //
     );
