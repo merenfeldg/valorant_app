@@ -4,14 +4,16 @@ import 'package:valorant_app/shared/enums/role_enum.dart';
 class AgentModel {
   final String name;
   final String description;
-  final String image;
+  final String portraitImage;
+  final String fullBodyImage;
   final RoleEnum role;
   final List<AbilityValueObject> abilities;
 
   AgentModel({
     required this.name,
     required this.description,
-    required this.image,
+    required this.portraitImage,
+    required this.fullBodyImage,
     required this.role,
     required this.abilities,
   });
@@ -19,14 +21,16 @@ class AgentModel {
   AgentModel copyWith({
     String? name,
     String? description,
-    String? image,
+    String? portraitImage,
+    String? fullBodyImage,
     RoleEnum? role,
     List<AbilityValueObject>? abilities,
   }) {
     return AgentModel(
       name: name ?? this.name,
       description: description ?? this.description,
-      image: image ?? this.image,
+      portraitImage: portraitImage ?? this.portraitImage,
+      fullBodyImage: fullBodyImage ?? this.fullBodyImage,
       role: role ?? this.role,
       abilities: abilities ?? this.abilities,
     );
@@ -36,7 +40,8 @@ class AgentModel {
     return AgentModel(
       name: json['displayName'],
       description: json['description'],
-      image: json['bustPortrait'],
+      portraitImage: json['displayIcon'],
+      fullBodyImage: json['fullPortrait'],
       role: _fromStringToRoleEnum(json['role']['displayName']),
       abilities: _fromJsonToAbilitiesList(json['abilities']),
     );
