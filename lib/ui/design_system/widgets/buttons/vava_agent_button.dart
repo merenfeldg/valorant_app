@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:valorant_app/ui/design_system/themes/theme_extensions.dart';
 
 class VavaAgentButton extends StatelessWidget {
@@ -45,7 +46,10 @@ class VavaAgentButton extends StatelessWidget {
           image: image,
           icon: icon!, //
         )
-        : SizedBox();
+        : _ButtonPortrait(
+          text: text,
+          image: image, //
+        );
   }
 }
 
@@ -102,6 +106,47 @@ class _ButtonFullBody extends StatelessWidget {
               icon, //
               height: 36,
             ), //
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _ButtonPortrait extends StatelessWidget {
+  final String text;
+  final String image;
+
+  const _ButtonPortrait({
+    required this.text,
+    required this.image, //
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = context.colors;
+
+    return Container(
+      height: 130,
+      width: 100,
+      decoration: BoxDecoration(
+        color: colors.greyNormalColor,
+        borderRadius: BorderRadius.circular(24),
+      ),
+      child: Column(
+        children: [
+          Gap(8),
+          Image.network(
+            image,
+            height: 80, //
+          ),
+          Gap(8),
+          Text(
+            text,
+            style: TextStyle(
+              color: colors.whiteColor,
+              fontSize: 16, //
+            ),
           ),
         ],
       ),
