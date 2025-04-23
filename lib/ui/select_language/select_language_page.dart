@@ -74,9 +74,7 @@ class _SelectLanguagePageState extends State<SelectLanguagePage> {
                 Gap(30),
                 Expanded(
                   child: VavaIntlButtonListControl(
-                    onChanged: (languageSelected) {
-                      _selectLanguage(languageSelected);
-                    },
+                    onChanged: _selectLanguage,
                     children: [
                       VavaIntlButtonItem(
                         language: LanguageEnum.portuguese,

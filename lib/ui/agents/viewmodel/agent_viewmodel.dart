@@ -1,27 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:result_command/result_command.dart';
 import 'package:result_dart/result_dart.dart';
-import 'package:valorant_app/domain/models/agent_model.dart';
 
 import 'package:valorant_app/domain/repositories/i_agent_repository.dart';
+import 'package:valorant_app/ui/agents/viewmodel/agent_states.dart';
 
-class AgentViewmodel extends ChangeNotifier {
+class AgentViewmodel extends ValueNotifier<AgentStates> {
   //
   final IAgentRepository _repository;
 
-  late Command0 getAgentsCommand;
-  late Command1 searchByAgentsCommand;
+  AgentViewmodel(this._repository) //
+    : super(InitialState());
 
-  AgentViewmodel(this._repository) {
-    getAgentsCommand = Command0(_getAgents);
-    searchByAgentsCommand = Command1<List<AgentModel>, String>(_searchByAgent);
+  void getAgents() {
+    _repository.getAgents().fold(
+      (success) => _emit(LoadedAgentsState(success)),
+      (failure) => _emit(NotFoundAgentState()), //
+    );
   }
 
-  AsyncResult<List<AgentModel>> _getAgents() {
-    return _repository.getAgents();
+  void searchAgentByName(String name) {
+    _repository
+        .searchByAgent(name)
+        .fold(
+          (succes) => _emit(LoadedAgentsState(succes)),
+          (error) => _emit(NotFoundAgentState()),
+        );
   }
 
-  AsyncResult<List<AgentModel>> _searchByAgent(String name) {
-    return _repository.searchByAgent(name);
+  void _emit(AgentStates newState) {
+    value = newState;
   }
 }

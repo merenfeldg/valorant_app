@@ -31,7 +31,7 @@ class VavaTabBar extends StatelessWidget implements PreferredSizeWidget {
       ),
       tabs: [
         Tab(text: 'Agents'), //
-        Tab(text: 'Funções'),
+        Tab(text: 'Roles'),
       ],
     );
   }

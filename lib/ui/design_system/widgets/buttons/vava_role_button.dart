@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:valorant_app/ui/design_system/themes/theme_extensions.dart';
 
 class VavaRoleButton extends StatelessWidget {
@@ -28,11 +29,11 @@ class VavaRoleButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(24),
         ),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             SizedBox(
-              height: 90,
-              width: 90,
+              height: 80,
+              width: 80,
               child: Image.asset(
                 icon,
                 fit: BoxFit.cover, //
@@ -42,7 +43,7 @@ class VavaRoleButton extends StatelessWidget {
               text,
               style: TextStyle(
                 color: colors.whiteColor, //
-                fontSize: 20,
+                fontSize: 18,
                 fontWeight: FontWeight.bold,
               ),
             ),

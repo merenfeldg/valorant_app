@@ -77,46 +77,48 @@ class _ButtonFullBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
-    final isTextMoreFiveCharacter = text.length > 5;
+    final borderRadiusAll24 = BorderRadius.circular(24);
+    final isTextMoreFiveCharacter = text.length > 6;
 
     return InkWell(
       onTap: onTap,
+      borderRadius: borderRadiusAll24,
       child: Container(
-        height: 150,
-        width: 150, //
+        height: 130,
+        width: 130, //
         decoration: BoxDecoration(
           color: colors.redPrimaryColor, //
-          borderRadius: BorderRadius.circular(24),
+          borderRadius: borderRadiusAll24,
         ),
         child: Stack(
           clipBehavior: Clip.none,
           children: [
             Positioned(
               bottom: -10,
-              right: -18,
+              right: -10,
               child: CachedNetworkImage(
                 imageUrl: image, //
-                height: 200,
+                height: 185,
               ),
             ),
             Positioned(
-              top: 110,
-              left: isTextMoreFiveCharacter ? 97 : 120,
+              top: 100,
+              left: isTextMoreFiveCharacter ? 72 : 80,
               child: Text(
                 text,
                 style: TextStyle(
                   color: colors.whiteColor,
-                  fontSize: isTextMoreFiveCharacter ? 18 : 24, //
+                  fontSize: isTextMoreFiveCharacter ? 18 : 19, //
                   fontWeight: FontWeight.bold,
                 ),
               ), //
             ),
             Positioned(
-              top: -15,
-              left: 132,
+              top: -10,
+              left: 118,
               child: Image.asset(
                 icon, //
-                height: 36,
+                height: 30,
               ), //
             ),
           ],
