@@ -79,6 +79,7 @@ class _ButtonFullBody extends StatelessWidget {
     final colors = context.colors;
     final borderRadiusAll24 = BorderRadius.circular(24);
     final isTextMoreFiveCharacter = text.length > 6;
+    final isTextGreaterOrEqualFourCharacter = text.length <= 4;
 
     return InkWell(
       onTap: onTap,
@@ -102,18 +103,6 @@ class _ButtonFullBody extends StatelessWidget {
               ),
             ),
             Positioned(
-              top: 100,
-              left: isTextMoreFiveCharacter ? 72 : 80,
-              child: Text(
-                text,
-                style: TextStyle(
-                  color: colors.whiteColor,
-                  fontSize: isTextMoreFiveCharacter ? 18 : 19, //
-                  fontWeight: FontWeight.bold,
-                ),
-              ), //
-            ),
-            Positioned(
               top: -10,
               left: 118,
               child: Image.asset(
@@ -121,10 +110,36 @@ class _ButtonFullBody extends StatelessWidget {
                 height: 30,
               ), //
             ),
+            Positioned(
+              top: 100,
+              left: _ComponentController.setPositionTextFromAmountWords(
+                text.length,
+              ),
+              child: Text(
+                text,
+                textAlign: TextAlign.end,
+                style: TextStyle(
+                  color: colors.whiteColor,
+                  fontSize: isTextMoreFiveCharacter ? 18 : 19, //
+                  fontWeight: FontWeight.bold,
+                ),
+              ), //
+            ),
           ],
         ),
       ),
     );
+  }
+}
+
+abstract class _ComponentController {
+  static double setPositionTextFromAmountWords(int amountWords) {
+    if (amountWords > 6) {
+      return 72;
+    } else if (amountWords <= 4) {
+      return 105;
+    }
+    return 90;
   }
 }
 

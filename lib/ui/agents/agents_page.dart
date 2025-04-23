@@ -98,11 +98,11 @@ class _AgentsPageState extends State<AgentsPage> with TickerProviderStateMixin {
                                 crossAxisCount: 2,
                                 crossAxisSpacing: 36,
                                 mainAxisSpacing: 64,
-                                mainAxisExtent: 140,
+                                mainAxisExtent: 140, //AQUI
                               ),
-                          padding: EdgeInsets.all(16),
+                          padding: EdgeInsets.all(16), //AQUI
                           itemCount: agents.length,
-                          itemBuilder: (context, index) {
+                          itemBuilder: (_, index) {
                             final agent = agents[index];
                             return VavaAgentButton.fullBody(
                               text: agent.name,
