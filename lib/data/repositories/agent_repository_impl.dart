@@ -35,7 +35,7 @@ class AgentRepositoryImpl implements IAgentRepository {
   }
 
   @override
-  AsyncResult<List<AgentModel>> searchByAgents(String name) {
+  AsyncResult<List<AgentModel>> searchByAgent(String name) {
     return getAgents() //
         .map(
           (agents) {

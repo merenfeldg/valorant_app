@@ -3,5 +3,5 @@ import 'package:valorant_app/domain/models/agent_model.dart';
 
 abstract interface class IAgentRepository {
   AsyncResult<List<AgentModel>> getAgents();
-  AsyncResult<List<AgentModel>> searchByAgents(String name);
+  AsyncResult<List<AgentModel>> searchByAgent(String name);
 }

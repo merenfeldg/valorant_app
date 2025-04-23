@@ -14,14 +14,14 @@ class AgentViewmodel extends ChangeNotifier {
 
   AgentViewmodel(this._repository) {
     getAgentsCommand = Command0(_getAgents);
-    searchByAgentsCommand = Command1<List<AgentModel>, String>(_searchByAgents);
+    searchByAgentsCommand = Command1<List<AgentModel>, String>(_searchByAgent);
   }
 
   AsyncResult<List<AgentModel>> _getAgents() {
     return _repository.getAgents();
   }
 
-  AsyncResult<List<AgentModel>> _searchByAgents(String name) {
-    return _repository.searchByAgents(name);
+  AsyncResult<List<AgentModel>> _searchByAgent(String name) {
+    return _repository.searchByAgent(name);
   }
 }
