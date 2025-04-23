@@ -6,23 +6,22 @@ import 'package:valorant_app/domain/models/agent_model.dart';
 import 'package:valorant_app/domain/repositories/i_agent_repository.dart';
 
 class AgentViewmodel extends ChangeNotifier {
+  //
   final IAgentRepository _repository;
-  late Command0 getAgentsCommand;
 
-  final agents = <AgentModel>[];
+  late Command0 getAgentsCommand;
+  late Command1 searchByAgentsCommand;
 
   AgentViewmodel(this._repository) {
     getAgentsCommand = Command0(_getAgents);
+    searchByAgentsCommand = Command1<List<AgentModel>, String>(_searchByAgents);
   }
 
   AsyncResult<List<AgentModel>> _getAgents() {
-    final agentsResult = _repository.getAgents();
+    return _repository.getAgents();
+  }
 
-    agentsResult.fold(
-      (success) => agents.addAll(success),
-      (error) {}, //
-    );
-
-    return agentsResult;
+  AsyncResult<List<AgentModel>> _searchByAgents(String name) {
+    return _repository.searchByAgents(name);
   }
 }
