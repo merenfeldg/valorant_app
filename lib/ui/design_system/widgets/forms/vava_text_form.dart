@@ -15,13 +15,13 @@ class VavaTextForm extends StatelessWidget {
     final colors = context.colors;
 
     return SizedBox(
-      height: 45,
+      height: 40,
       child: TextFormField(
         style: TextStyle(color: colors.greyLightColor),
         onChanged: onChanged,
         decoration: InputDecoration(
           filled: true,
-          fillColor: colors.greyDarkColor,
+          fillColor: colors.greyNormalColor,
           prefixIcon: Padding(
             padding: const EdgeInsets.only(left: 30, right: 10),
             child: Icon(
@@ -34,7 +34,7 @@ class VavaTextForm extends StatelessWidget {
             color: colors.greyLightColor, //
             fontSize: 12,
           ),
-          contentPadding: EdgeInsets.symmetric(vertical: 10),
+          contentPadding: EdgeInsets.symmetric(vertical: 1),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(40),
             borderSide: BorderSide(style: BorderStyle.none),
