@@ -153,8 +153,8 @@ class _ButtonPortrait extends StatelessWidget {
         child: Column(
           children: [
             Gap(8),
-            Image.network(
-              image,
+            CachedNetworkImage(
+              imageUrl: image,
               height: 80, //
             ),
             Gap(8),
