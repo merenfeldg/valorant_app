@@ -98,9 +98,9 @@ class _AgentsPageState extends State<AgentsPage> with TickerProviderStateMixin {
                                 crossAxisCount: 2,
                                 crossAxisSpacing: 36,
                                 mainAxisSpacing: 64,
-                                mainAxisExtent: 140, //AQUI
+                                mainAxisExtent: 140,
                               ),
-                          padding: EdgeInsets.all(16), //AQUI
+                          padding: EdgeInsets.all(16),
                           itemCount: agents.length,
                           itemBuilder: (_, index) {
                             final agent = agents[index];

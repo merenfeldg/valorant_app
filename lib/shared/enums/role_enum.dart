@@ -5,15 +5,15 @@ enum RoleEnum {
   ),
   initiator(
     name: 'Initiator',
-    image: 'assets/images/role_icons/initiator_icon.png', //
+    image: 'assets/images/role_icons/initiator_icon.png',
   ),
   controller(
     name: 'Controller',
-    image: 'assets/images/role_icons/controller_icon.png', //
+    image: 'assets/images/role_icons/controller_icon.png',
   ),
   sentinel(
     name: 'Sentinel',
-    image: 'assets/images/role_icons/sentinel_icon.png', //
+    image: 'assets/images/role_icons/sentinel_icon.png',
   ),
   unknown(
     name: 'Unkown',

@@ -79,7 +79,6 @@ class _ButtonFullBody extends StatelessWidget {
     final colors = context.colors;
     final borderRadiusAll24 = BorderRadius.circular(24);
     final isTextMoreFiveCharacter = text.length > 6;
-    final isTextGreaterOrEqualFourCharacter = text.length <= 4;
 
     return InkWell(
       onTap: onTap,
@@ -123,7 +122,7 @@ class _ButtonFullBody extends StatelessWidget {
                   fontSize: isTextMoreFiveCharacter ? 18 : 19, //
                   fontWeight: FontWeight.bold,
                 ),
-              ), //
+              ),
             ),
           ],
         ),

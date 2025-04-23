@@ -65,7 +65,7 @@ class AgentModel {
     return switch (name) {
       'Initiator' => RoleEnum.initiator,
       'Sentinel' => RoleEnum.sentinel,
-      'Initiador' => RoleEnum.initiator,
+      'Controller' => RoleEnum.controller,
       'Duelist' => RoleEnum.duelist,
       _ => RoleEnum.unknown,
     };
